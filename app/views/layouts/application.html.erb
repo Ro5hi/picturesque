@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html style="padding: 95px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Picturesque</title>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>   
+</head>
+
+<nav class="navbar navbar-light navbar-expand-md" style="background-color: #000000;">
+<div class="container-fluid"><a class="navbar-brand" data-bs-hover-animate="pulse" href="#" style="color: rgba(116,245,56,0.9);">Picturesque</a>
+    <div class="collapse navbar-collapse" id="navcol-1">
+        <ul class="nav navbar-nav">
+        <li>
+          <%= link_to "New Post", new_post_path %>
+        </li>
+          <%- if current_user %>
+        <li>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, confirm: "Are you sure?" %>
+        </li>
+          <% else %>
+        <li>
+          <%= link_to "Login", new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to "Register", new_user_registration_path%>
+        </li>
+          <% end %>
+        </ul>
+</div>
+</div>
+</nav>
+
+<%= yield %>
+
+<footer class="page-footer">
+<p>2020 Picturesque ™</p>
+</footer>
+
+</body>
+
+</html>
