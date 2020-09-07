@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts
 
-
+  mount_uploader :photo, PhotoUploader
+  serialize :photo, JSON
+  
 end
