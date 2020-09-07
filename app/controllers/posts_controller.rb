@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     end 
 
     def show 
+        @posts = Post.active
     end 
 
     private 
