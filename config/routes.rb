@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'posts#index'
+  root 'users#index'
 
-  resources :posts 
+  resources :posts, only: [:new, :show, :create]
+
+  get '/feed' => "posts#index"
 
   devise_for :users
   devise_scope :user do

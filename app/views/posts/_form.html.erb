@@ -1,0 +1,12 @@
+<div class="container">
+
+    <%= form_for @post, html: { multipart: true }  do |f| %>
+
+    <%= f.file_field :photo %>
+    <%= f.hidden_field :photo_cache %>
+
+    <%= f.submit "Upload", class: "btn btn-success" %>
+
+    <% end %>
+    
+</div>

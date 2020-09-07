@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_account!
+    before_action :authenticate_user!
 
     def index 
         # User home goes here
