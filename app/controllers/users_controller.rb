@@ -2,7 +2,8 @@ class UsersController < ApplicationController
     before_action :authenticate_user!
 
     def index 
-        # User home goes here
+        # User feed goes here
+        @posts = Post.active
     end 
 
     def new 

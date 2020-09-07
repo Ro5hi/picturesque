@@ -5,5 +5,6 @@ class Post < ActiveRecord::Base
     mount_uploader :photo, PhotoUploader
     serialize :photo, JSON
     
+    scope :active, -> { where active: true }
 
 end 
