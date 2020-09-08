@@ -38,3 +38,6 @@
 
 # Ignore file used for keys and tokens
 .env
+
+# Ignore omniauth.rb
+/config/initializers/omniauth.rb
