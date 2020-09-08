@@ -1,12 +1,16 @@
 class PostsController < ApplicationController
     
+    def index
+        @posts = Post.order('created_at DESC')
+      end
+
     def new 
         @post = Post.new 
     end
 
     def create 
         @post = Post.new(post_only)
-
+        
         if @post.save 
             redirect_to feed_path, flash: { success: "Upload successful." }
         else 
@@ -15,13 +19,24 @@ class PostsController < ApplicationController
     end 
 
     def show 
-        @posts = Post.active
     end 
+
+    def update
+        if @post.update_attributes(post_params)
+          redirect_to post_path(@post)
+        else
+          render :edit
+        end
+    end
 
     private 
 
     def post_only
-        params.require(:post).permit(:photo, :photo_cache) 
+        params.require(:post).permit(:photo, :photo_cache, {photo: []})
     end 
+
+    def set_post
+        @post = Post.find(params[:id])
+    end
 
 end 

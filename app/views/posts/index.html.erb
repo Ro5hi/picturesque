@@ -1,4 +1,4 @@
 <% @posts.each do |post| %>
-<%= image_tag post.photo.url, class: "img img-fluid" %>    
+<%= image_tag @post.photo_url.to_s if @post.photo_url.present?, class: "img img-fluid" %>    
     
 <% end %>
