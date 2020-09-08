@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :new, :show, :create]
 
   get '/feed' => "posts#index"
+  get '/auth/twitter/callback' => 'sessions#create'
 
   devise_for :users
   devise_scope :user do

@@ -2,6 +2,11 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  
+      <div class="flex-even text-center bg-info rounded text-white mr-1">
+        <%= link_to 'Sign in with Twitter', '/auth/twitter' %>
+      </div>
+    </div>
 
   <div class="field">
     <%= f.label :email %><br />
