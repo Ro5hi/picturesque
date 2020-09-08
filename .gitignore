@@ -37,4 +37,4 @@
 /config/initializers/carrierwave.rb
 
 # Ignore file used for keys and tokens
-/config/.env
+.env

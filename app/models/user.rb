@@ -4,8 +4,8 @@ require 'carrierwave/orm/activerecord'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :omniauthable, :registerable,
+         :recoverable, :rememberable, :validatable, :omniauth_providers => [:twitter]
 
   has_many :posts
 
@@ -21,5 +21,4 @@ class User < ApplicationRecord
     )
     user
   end
-  
-end
+end 
