@@ -13,12 +13,12 @@
 <div class="container-fluid"><a class="navbar-brand" data-bs-hover-animate="pulse" href="#" style="color: rgba(116,245,56,0.9);">Picturesque</a>
     <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="nav navbar-nav">
-        <li>
-          <%= link_to "New Post", new_post_path %>
-        </li>
           <%- if current_user %>
         <li>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, confirm: "Are you sure?" %>
+        </li>
+        <li>
+          <%= link_to "New Post", new_post_path %>
         </li>
           <% else %>
         <li>

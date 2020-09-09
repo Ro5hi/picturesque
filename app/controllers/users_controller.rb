@@ -9,6 +9,10 @@ class UsersController < ApplicationController
         # User profile goes here 
     end 
 
+    def index
+        # User personal feed goes here 
+    end 
+
     
 
 end

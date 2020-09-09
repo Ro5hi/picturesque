@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_221131) do
+ActiveRecord::Schema.define(version: 2020_09_08_235458) do
 
   create_table "omniauth", force: :cascade do |t|
     t.string "provider"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_221131) do
     t.string "photo"
     t.text "description"
     t.string "session_id"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

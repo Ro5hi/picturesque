@@ -6,11 +6,10 @@ Rails.application.routes.draw do
 
   get '/feed' => "posts#index"
 
-  devise_for :users
+  devise_for :users, controllers:{omniauth_callbacks: "omniauth_callbacks"}
   devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+    delete '/users/sign_out' => 'devise/sessions#destroy'
     get '/auth/twitter' => 'devise/omniauth_callbacks#passthru'
-    get '/auth/twitter/callback' => 'devise/omniauth_callbacks#twitter'
-    get '/auth/twitter' => 'sessions#create'
+    get '/auth/twitter/callback' => 'omniauth_callbacks#twitter'
   end
 end 
