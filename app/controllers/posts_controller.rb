@@ -12,6 +12,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_only)
         
         if @post.save 
+            binding.pry
             redirect_to feed_path, flash: { success: "Upload successful." }
         else 
             redirect_to new_post_path, flash: { danger: "Upload failed." }

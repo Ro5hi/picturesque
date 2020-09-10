@@ -7,7 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :omniauthable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauth_providers => [:twitter]
 
-  has_many :posts
+         has_many :comments
+         has_many :posts, through: :comments
 
   mount_uploader :photo, PhotoUploader
   serialize :photo, JSON

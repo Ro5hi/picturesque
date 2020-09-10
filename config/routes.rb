@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers:{omniauth_callbacks: "omniauth_callbacks"}
   devise_scope :user do
-    delete '/users/sign_out' => 'devise/sessions#destroy'
+    get '/users/sign_out' => 'devise/sessions#destroy'
     get '/auth/twitter' => 'devise/omniauth_callbacks#passthru'
     get '/auth/twitter/callback' => 'omniauth_callbacks#twitter'
   end
