@@ -24,7 +24,7 @@
           <%= link_to "Feed", feed_path %>
         </li>
         <li>
-          <%= link_to "Profile", "#" %>
+          <%= link_to "Profile", profile_path(current_user.username) %>
         </li>
           <% else %>
         <li>
