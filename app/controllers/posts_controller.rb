@@ -1,18 +1,17 @@
 class PostsController < ApplicationController
     
     def index
-        @posts = Post.order('created_at DESC')
+        @posts = Post.order("created_at DESC")
       end
 
     def new 
         @post = Post.new 
     end
 
-    def create 
-        @post = Post.new(post_only)
+    def create
+        @post = Post.new(post_only, user_post)
         
-        if @post.save 
-            binding.pry
+        if @post.save
             redirect_to feed_path, flash: { success: "Upload successful." }
         else 
             redirect_to new_post_path, flash: { danger: "Upload failed." }
@@ -38,6 +37,12 @@ class PostsController < ApplicationController
 
     def set_post
         @post = Post.find(params[:id])
-    end
+    end 
+ 
+    def user_post
+        @user = current_user
+        posts = current_user.posts
+        post = current_user.posts.build
+    end 
 
 end 

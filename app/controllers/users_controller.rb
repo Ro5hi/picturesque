@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end 
 
     def index
-        # User personal feed goes here 
+        @posts = Post.active
     end 
 
     
