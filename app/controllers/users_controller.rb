@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user!
-
-    def new 
-        @user = User.new 
-    end 
-
+    before_action :authenticate_user!, only: [:index, :new, :create, :show, :destroy]
+    
     def show
         # User profile goes here 
     end 
@@ -12,7 +8,5 @@ class UsersController < ApplicationController
     def index
         @posts = Post.active
     end 
-
-    
 
 end

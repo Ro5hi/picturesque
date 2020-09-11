@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-8">
             <% @posts.each do |post| %>
-                <%= image_tag post.photo.url, class: "img img-fluid"%>          
+                <div><%= post.user.username %></div>
+                <%= image_tag post.photo.url, :size => "500x600", :crop => :fill %>          
             <% end %>
         </div>
     </div>
