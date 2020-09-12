@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, only: [:index, :new, :create, :show, :destroy]
-    
+
     def index 
         @posts = Post.order("created_at DESC")
     end
@@ -27,7 +26,7 @@ class PostsController < ApplicationController
     end 
 
     def update
-        if @post.update_attributes(post_params)
+        if @post.update_attributes(post_only)
           redirect_to post_path(@post)
         else
           render :edit

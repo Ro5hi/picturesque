@@ -8,8 +8,8 @@
     </div>
 
     <div class="row">
-    <% @post.comments.each do |comment| %>
-        <%= comment.body %>
+    <% @post.comments.limit(10).each do |comment| %>
+        <%= comment.user.username %><%= comment.body %>
         <br>
     <% end %>
     </div>

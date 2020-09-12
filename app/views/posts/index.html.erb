@@ -2,9 +2,8 @@
     <div class="row">
         <div class="col-8">
             <% @posts.each do |post| %>
-                <div><strong><%= post.user.username %></div></strong>
-                    <a href=<%= "/posts/#{post.id}" %> </a>
-                    <%= image_tag post.photo.url, :size => "300x300", class: 'img-responsive post-img' %>
+                <div><strong><%= link_to "#{ post.user.username }", "/profile/#{post.user.username}" %></div></strong>
+                <a href=<%= "/posts/#{post.id}" %>><%= image_tag post.photo.url, :size => "300x300", class: 'img-responsive post-img' %>
                 <div class="row"><p><%= simple_format post.caption %></p></div>
             <% end %>
         </div>

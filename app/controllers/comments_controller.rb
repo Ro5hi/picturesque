@@ -1,17 +1,15 @@
 class CommentsController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :destroy]
 
-    def new 
-        puts "a comment"
+    def new
         @comment = Comment.new 
         @comment.post_id = params[:post_id]
     end
 
-    def create 
-        puts "another comment"
+    def create
         @comment = Comment.new(comment_only)
         @comment.user_id = current_user.id 
-        @comment.post_id = params[:comment][:post_id] 
-        puts "#{params[:comment_post_id]}"
+        @comment.post_id = params[:comment][:post_id]
         
         if @comment.save 
             redirect_to feed_path, flash: { success: "Comment submitted." }
