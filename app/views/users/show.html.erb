@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
             <div class="col-4 center">
-                <%= image_tag @user.photo.url, class: "img-thumbnail" %>
+                <%= image_tag @user.photo.url, :size => "150x150", class: "img-rounded" %>
             </div>
 
                 <div class="col-8 text-center">
                     <h1><%= @user.username %></h1>
                         <h6><%= @user.name %></h6>
-                    <p><%= @user.description %></p>
+                    <p><%= simple_format @user.description %></p>
                     <%= link_to edit_user_registration_path, class: "btn-btn-muted" %>
                 </div>
 

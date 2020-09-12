@@ -6,9 +6,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :omniauthable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauth_providers => [:twitter]
-
-         has_many :comments
-         has_many :posts, through: :comments
+        
+        has_many :comments, through: :posts
+        has_many :posts  
 
   mount_uploader :photo, PhotoUploader
   serialize :photo, JSON
@@ -23,5 +23,4 @@ class User < ApplicationRecord
     end
     user
   end
-
 end 
