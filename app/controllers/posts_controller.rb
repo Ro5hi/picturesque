@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, only: [:index, :new, :create, :show, :destroy]
     
     def index 
-        @posts = Post.order("created_at DESC").take(15)
+        @posts = Post.order("created_at DESC")
     end
 
     def new 
@@ -21,8 +21,9 @@ class PostsController < ApplicationController
     end 
 
     def show 
+        @user = current_user
         @post = Post.find_by(params[:id])
-        @comments = Comment.find_by(params[:id])
+        @comments = Comment.where(post_id: params[:id])
     end 
 
     def update
@@ -48,7 +49,6 @@ class PostsController < ApplicationController
     end 
 
     def set_post
-        @post = Post.find(params[:id])
+        @post = Post.where(params[:id])
     end 
-
 end 

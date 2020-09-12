@@ -29,4 +29,9 @@ class User < ApplicationRecord
     end
     user
   end
+
+  def profile_photo 
+    @user = User.find(params[:photo])
+  end 
+  
 end 

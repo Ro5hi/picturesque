@@ -1,22 +1,25 @@
 <%= link_to 'All posts', posts_path %>
 
-    <%= image_tag post.photo.url, :size => "300x300", :crop => :fill %>
+    <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
  
     <div class="container">
         <strong><%= @user.username %></strong>
-        <p><%= simple_format @post.description %></p>
+        <p><%= simple_format @post.caption %></p>
     </div>
 
     <div class="row">
-        <%= @post.comments %>
+    <% @post.comments.each do |comment| %>
+        <%= comment.body %>
+        <br>
+    <% end %>
     </div>
     <div class="container">
-        <%= link_to "Comment", new_comment_path %>
+        <%= link_to "Comment Post", new_comment_path(post_id:@post.id) %>
     </div>
 
     <div class="container">
         <div class="row">
-                <p><%= link_to 'Edit', edit_post_path(@post) %></p>
-                <p><%= link_to "Delete", [post.id], method: :delete, data: {confirm: "You sure?"}, class: 'label alert'</p>
+                <p><%= link_to 'Edit', "/edit/post/#{@post.id}" %></p>
+                <p><%= link_to "Delete", @post, method: :delete, data: {confirm: "You sure?"}, class: 'label alert' %></p>
         </div>
     </div>

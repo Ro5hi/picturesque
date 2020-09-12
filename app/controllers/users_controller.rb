@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+    
     before_action :authenticate_user!, only: [:index, :new, :create, :show, :destroy]
     before_action :set_user, only: [:show]
 
     def show
         # User profile goes here 
-        @posts = @user.posts.active
+        @posts = @user.posts
     end  
 
     def index
@@ -20,8 +21,5 @@ class UsersController < ApplicationController
     def set_user 
         @user = User.find_by_username(params[:username])
     end 
-
-    def profile_photo
-        @user = User.find_by_photo(params[:photo])
-    end 
-end
+    
+end 

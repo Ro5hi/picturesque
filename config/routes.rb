@@ -2,11 +2,12 @@ Rails.application.routes.draw do
 
   root 'users#index'  
 
-  resources :posts, only: [:index, :new, :show, :create, :destroy]
+  resources :posts, only: [:index, :new, :show, :update, :create, :destroy]
   resources :comments, only: [:new, :create, :show, :destroy]
 
   get '/feed' => "posts#index"
   get 'profile/:username' => "users#show", as: :profile
+  get '/edit/post/:id' => "post#update"
 
   devise_for :users, controllers:{omniauth_callbacks: "omniauth_callbacks"}
   devise_scope :user do

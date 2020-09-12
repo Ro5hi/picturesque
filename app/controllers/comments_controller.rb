@@ -1,14 +1,17 @@
 class CommentsController < ApplicationController
 
     def new 
+        puts "a comment"
         @comment = Comment.new 
         @comment.post_id = params[:post_id]
     end
 
     def create 
+        puts "another comment"
         @comment = Comment.new(comment_only)
         @comment.user_id = current_user.id 
-        @comment.post_id = params[:post_id] 
+        @comment.post_id = params[:comment][:post_id] 
+        puts "#{params[:comment_post_id]}"
         
         if @comment.save 
             redirect_to feed_path, flash: { success: "Comment submitted." }
@@ -22,16 +25,16 @@ class CommentsController < ApplicationController
         post = @comment.post 
 
         if @comment.destroy
-            redirect_to comments_path, flash { success: "Comment deleted."}
+            redirect_to comments_path, flash: { success: "Comment deleted."}
         else 
-            redirect_to comments_path, flash { danger: "Could not delete comment."}
+            redirect_to comments_path, flash: { danger: "Could not delete comment."}
         end 
     end 
 
     private 
 
     def comment_only
-        params.require(:comment).permit(:body, :user_id, :post_id)
+        params.require(:comment).permit(:body, :user_id, :post_id, :id)
     end 
 
 end 
