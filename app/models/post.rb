@@ -10,11 +10,12 @@ class Post < ActiveRecord::Base
     serialize :photo, JSON
 
     validates_presence_of :photo
-    before_create :set_active 
+    validates :caption, length: { maximum: 150 }
+
     scope :active, -> { where active: true }
 
     def photo_presence
-        errors.add(:photo, "can't be blank") unless photo.attached?
+        errors.add(:photo, "Can't be blank") unless photo.attached?
     end 
 
 end 

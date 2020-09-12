@@ -2,8 +2,10 @@
     <div class="row">
         <div class="col-8">
             <% @posts.each do |post| %>
-                <div><%= post.user.username %></div>
-                <%= image_tag post.photo.url, :size => "500x600", :crop => :fill %>          
+                <div><strong><%= post.user.username %></div></strong>
+                <%= image_tag post.photo.url, :size => "300x300", :crop => :fill %>
+                <div class="row"><p><%= simple_format post.caption %></p></div>
+                <%= link_to "Post", '/posts/:id' %>
             <% end %>
         </div>
     </div>

@@ -31,11 +31,7 @@ class CommentsController < ApplicationController
     private 
 
     def comment_only
-        params.require(:comment).permit(:photo, :photo_cache, {photo: []})
+        params.require(:comment).permit(:body, :user_id, :post_id)
     end 
-
-    def set_comment
-        @comment = comment.find(params[:id])
-    end
 
 end 

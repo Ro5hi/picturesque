@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, only: [:index, :new, :create, :show, :destroy]
     
-    def index
-        @posts = Post.order("created_at DESC")
-      end
+    def index 
+        @posts = Post.order("created_at DESC").take(15)
+    end
 
     def new 
         @post = Post.new 
@@ -21,6 +21,8 @@ class PostsController < ApplicationController
     end 
 
     def show 
+        @post = Post.find_by(params[:id])
+        @comments = Comment.find_by(params[:id])
     end 
 
     def update
@@ -31,21 +33,22 @@ class PostsController < ApplicationController
         end
     end
 
+    def destroy 
+        if @post = Post.find_by(id: params[:id])
+            @post.destroy
+        else 
+            redirect_to feed_path
+        end 
+    end  
+
     private 
 
     def post_only
-        params.require(:post).permit(:photo, :photo_cache, {photo: []}, :user_id)
+        params.require(:post).permit(:photo, :photo_cache, :caption, :user_id)
     end 
 
     def set_post
         @post = Post.find(params[:id])
     end 
- 
-    # def user_post
-    #     @user = current_user
-    #     user_post = Post.find_by(params[:user_id])
-    #     posts = current_user.posts
-    #     post = current_user.posts.build
-    # end 
 
 end 

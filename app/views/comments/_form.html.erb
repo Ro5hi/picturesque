@@ -1,23 +1,11 @@
 <div class="container">
-  <% if logged_in? %>
-  <%= form_for([@comment.post, @comment]) do |f| %>
-    <% if @comment.errors.any? %>
-    <%= pluralize(@comment.errors.count, "error") %>
-
-    <ul>
-    <% @comment.errors.full_messages.each do |msg| %>
-      <li><%= message %></li>
-    <% end %>
-
-  <div class="field">
-      <%= f.text_field :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-    <% end %>
-  <% else %>
-    <h3>Please login to your account to comment on this post.</h3>
-  <% end %>
-  </div>
+<%= form_for @comment do |f| %>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <div class="input-group">
+        <%= f.submit "Comment", class: btn btn-success float-right" %>
+        <div class="input-group-append">
+            <%= f.text_field :comment, placeholder: "Comment on this post." %>               
+        </div>
+    </div>
+<% end %>
 </div>

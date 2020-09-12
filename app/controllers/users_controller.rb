@@ -4,14 +4,12 @@ class UsersController < ApplicationController
 
     def show
         # User profile goes here 
-        posts = @user.posts.active
-    end 
+        @posts = @user.posts.active
+    end  
 
     def index
         @posts = Post.active
-    end 
-
-    def user_posts
+        @comment = Comment.new 
     end 
 
     def update 
@@ -23,4 +21,7 @@ class UsersController < ApplicationController
         @user = User.find_by_username(params[:username])
     end 
 
+    def profile_photo
+        @user = User.find_by_photo(params[:photo])
+    end 
 end
