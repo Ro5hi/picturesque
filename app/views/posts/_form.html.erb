@@ -1,6 +1,9 @@
-<div class="container">
-<%= render 'errors', object: @post %>
-<%= form_for @post, :html => {:multipart => true} do |f| %>
+  <div class="alert alert-danger" role="alert">
+    <% if @post.errors.any? %>
+      <h2><strong><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2></strong>
+    <% end %>  
+  </div>
+  <%= form_for @post, :html => {:multipart => true} do |f| %>
     <div class="form-group">
       <%= f.label :photo %><br />
       <%= f.file_field :photo %>

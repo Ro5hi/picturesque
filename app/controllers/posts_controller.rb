@@ -11,13 +11,13 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_only)
         @post.user_id = current_user.id if user_signed_in?
-      
+
         if @post.save
-            redirect_to feed_path, flash: { success: "Upload successful." }
+            redirect_to feed_path, notice: { success: "Upload successful." }
         else 
-            redirect_to new_post_path, flash: { danger: "Upload failed." }
+            redirect_to new_post_path, notice: { danger: "Upload failed." }
         end 
-    end 
+    end  
 
     def show 
         @user = current_user
@@ -25,11 +25,11 @@ class PostsController < ApplicationController
         @comments = Comment.where(post_id: params[:id])
     end 
 
-    def update
+    def edit
         if @post.update_attributes(post_only)
           redirect_to post_path(@post)
         else
-          render :edit
+          redirect_to edit_post_path(@post)
         end
     end
 
@@ -49,5 +49,6 @@ class PostsController < ApplicationController
 
     def set_post
         @post = Post.where(params[:id])
-    end 
+    end
+
 end 

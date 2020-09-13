@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'users#index'  
 
-  resources :posts, only: [:index, :new, :show, :update, :create, :destroy]
+  resources :posts, only: [:index, :new, :show, :update, :edit, :create, :destroy]
   resources :comments, only: [:new, :create, :show, :destroy]
 
   get '/feed' => "posts#index"

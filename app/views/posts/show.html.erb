@@ -1,4 +1,4 @@
-<%= link_to 'All posts', posts_path %>
+<%= link_to 'Feed', feed_path %>
 
     <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
  
@@ -8,8 +8,8 @@
     </div>
 
     <div class="row">
-    <% @post.comments.limit(10).each do |comment| %>
-        <%= comment.user.username %><%= comment.body %>
+    <% @post.comments.each do |comment| %>
+        <%= @comment.body %>
         <br>
     <% end %>
     </div>
@@ -19,7 +19,11 @@
 
     <div class="container">
         <div class="row">
-                <p><%= link_to 'Edit', "/edit/post/#{@post.id}" %></p>
-                <p><%= link_to "Delete", @post, method: :delete, data: {confirm: "You sure?"}, class: 'label alert' %></p>
+        <% if @post.user == current_user %>
+            <p><%= link_to 'Edit', edit_post_path(post_id:@post.id) %></p>
+            <p><%= link_to "Delete", @post, method: :delete, data: {confirm: "Are you sure?"}, class: 'label alert' %></p>
+        <% else %>
+            <%= link_to "Back", :back %>
+        <% end %>
         </div>
     </div>
