@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/feed' => "posts#index"
   get 'profile/:username' => "users#show", as: :profile
   get '/edit/post/:id' => "post#update"
+  get '/post/:id' => "post#show"
 
   devise_for :users, controllers:{omniauth_callbacks: "omniauth_callbacks"}
   devise_scope :user do
