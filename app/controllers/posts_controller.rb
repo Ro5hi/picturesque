@@ -49,11 +49,11 @@ class PostsController < ApplicationController
             redirect_to posts_path, notice: { danger: "No permission." }
         end 
     end
-    
+
     private
 
     def create_params 
-        params.require(:post).permit(:photo, :caption, :user_id)
+        params.require(:post).permit(:photo, :photo_cache, :caption, :user_id)
     end
 
     def edit_params 

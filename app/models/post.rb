@@ -4,7 +4,7 @@ require 'carrierwave/orm/activerecord'
 class Post < ActiveRecord::Base 
 
     belongs_to :user
-    has_many :comments
+    has_many :comments, through: :user
 
     mount_uploader :photo, PhotoUploader
     serialize :photo, JSON
