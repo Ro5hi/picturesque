@@ -1,1 +1,14 @@
-<%= render "form", f: f  %>
+<h1> Edit Post </h1>
+<%= form_for @post do |f| %>
+  <div class="form-group">
+    <%= f.label :caption %>
+    <%= f.text_field :caption %>
+    <%= f.hidden_field :post_id, value: current_user.id, class: 'd-none'%>
+  </div>
+
+  <div class="actions">
+    <%= button_to "Submit Changes", @post, :method => :patch %>
+  <% end %>
+
+  <p><%= button_to "Delete", @post, :method => :delete, :class => 'action destroy' %></p>
+  </div>

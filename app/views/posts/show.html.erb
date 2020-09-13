@@ -1,4 +1,4 @@
-<%= link_to 'Feed', feed_path %>
+<%= link_to 'Posts', posts_path %>
 
     <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
  
@@ -24,9 +24,8 @@
         <div class="row">
         <% if @post.user == current_user %>
             <p><%= link_to "Edit", edit_post_path(post_id:@post.id) %></p>
-            <p><%= link_to "Delete", @post, method: :delete, data: {confirm: "Are you sure?"}, class: 'label alert' %></p>
         <% else %>
-            <%= link_to "Feed", feed_path %>
+            <%= link_to "Posts", posts_path %>
         <% end %>
         </div>
     </div>

@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
     scope :active, -> { where active: true }
 
     def photo_presence
-        errors.add(:photo, "Can't be blank") unless photo.attached?
+        errors.add(:photo, "Can't be blank.") unless photo.attached?
     end 
 
 end 

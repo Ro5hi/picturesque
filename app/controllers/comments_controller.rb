@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
         @comment.post_id = params[:comment][:post_id]
         
         if @comment.save 
-            redirect_to feed_path, flash: { success: "Comment submitted." }
+            redirect_to posts_path, flash: { success: "Comment submitted." }
         else 
             redirect_to new_comment_path, flash: { danger: "Comment failed to submit." }
         end 
