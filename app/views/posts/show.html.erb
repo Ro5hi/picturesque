@@ -7,12 +7,11 @@
         <p><%= simple_format @post.caption %></p>
     </div>
     <div class="row">
-        # view to post comments here
     </div>
 
     </div>
     <div class="container">
-        # link to comment here
+        <%= link_to "Comment Post", new_comment_path(post_id:@post.id) %>
     </div>
 
     <div class="container">
