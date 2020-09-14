@@ -1,29 +1,47 @@
-<<<<<<< HEAD
-# README
+## Picturesque 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+PICTURESQUE is a Ruby on Rails project that was made as part of module 3 with Flatiron School.
+Inspired by Instagram. Picturesque aims to capture that appeal to provide users more interactability 
+through comments instead of likes/follows.
 
-Things you may want to cover:
+____________________________
 
-* Ruby version
+## Built with:
 
-* System dependencies
+Structured using HTML, CSS, Ruby, minimal Javascript and using Rails.
 
-* Configuration
+## Installation:
 
-* Database creation
+`Fork the file and run on local host after entering "rails s" in the terminal.`
 
-* Database initialization
+## Requirements:
 
-* How to run the test suite
+You will need to run *bundle install* after forking the project to get the necessary gems required for this web-app. 
 
-* Services (job queues, cache servers, search engines, etc.)
+## Usage:
 
-* Deployment instructions
+Users must first sign up for an account using their name, email, and a chosen password. Registered users may change their login credentials through the "Account" tab on the navigation bar. Carrierwave gem is used for storing photos. Once a photo is uploaded, the user can give the photo a caption. Users have their own profile page with a profile-picture feature. Users can also view other uploads in the Posts path. Users cannot edit content other than their own. 
 
-* ...
-=======
-# picturesque
-A Ruby on Rails project.
->>>>>>> 561a3716bfeadda28c281c2f87f4cb136c9050a0
+____________________________
+
+CATCH LIGHT
+
+Copyright (c) 2020 Shirlen Detablan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

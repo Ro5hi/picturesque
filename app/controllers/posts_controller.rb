@@ -19,12 +19,10 @@ class PostsController < ApplicationController
     end 
 
     def show
-        # @user = User.find_by(username: params[:username])
-        # @post = Post.find_by(params[:id])
+        binding.pry
     end 
 
     def edit
-        # @post = Post.find(params[:id])
     end 
 
     def update
@@ -55,12 +53,10 @@ class PostsController < ApplicationController
     end
 
     def edit_params 
-        params.require(:post).permit(:caption, :user_id)
+        params.require(:post).permit(:caption, :user_id, :post_id)
     end 
 
     def set_post
         @post = Post.find_by(id: params[:id])
-        # @user = User.find_by(params[:id])
-        # @user.photo = Post.where(photo: params[:photo])
     end
 end 
