@@ -1,23 +1,18 @@
 <%= link_to 'Posts', posts_path %>
 
-    <%= image_tag @post.user.photo.url, :size => "300x300", :crop => :fill %>
+    <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
  
     <div class="container">
         <strong><%= @post.user.username %></strong>
         <p><%= simple_format @post.caption %></p>
     </div>
     <div class="row">
-        <% @post.comments.limit(10).each do |comment| %>
-            <p>
-               <strong><%= link_to "#{comment.user.username}",  "/profile/#{@post.user.username}" %></strong>
-               <%= comment.body %>
-            </p>
-        <% end %>  
+
     </div>
 
     </div>
     <div class="container">
-        <%= link_to "Comment Post", new_comment_path(post_id:@post.id) %>
+      
     </div>
 
     <div class="container">
