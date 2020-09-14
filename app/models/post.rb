@@ -12,10 +12,16 @@ class Post < ActiveRecord::Base
     validates_presence_of :photo
     validates :caption, length: { maximum: 150 }
 
-    scope :active, -> { where active: true }
+    before_create :set_active 
+
+    scope :active, -> { where(active: true) }
 
     def photo_presence
         errors.add(:photo, "Can't be blank.") unless photo.attached?
+    end 
+
+    def set_active 
+        self.active = true 
     end 
 
 end 

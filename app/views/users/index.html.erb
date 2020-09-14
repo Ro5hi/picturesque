@@ -14,3 +14,18 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <h3> New Posts! </h3>
+        <% @posts.each do |post| %>
+            <div><strong><%= link_to "#{ post.user.username }", "/profile/#{post.user.username}" %></strong>
+                <div class="col-2">
+                    <%= image_tag post.photo.url, :size => "300x300", class: 'img-responsive post-img' %>
+                    <div class="row">
+                        <p><%= simple_format post.caption %></p>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
