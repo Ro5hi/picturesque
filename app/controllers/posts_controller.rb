@@ -22,6 +22,9 @@ class PostsController < ApplicationController
         binding.pry
     end 
 
+    def hashtags 
+    end 
+
     def edit
     end 
 
