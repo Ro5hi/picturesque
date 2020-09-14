@@ -2,7 +2,7 @@
 
 PICTURESQUE is a Ruby on Rails project that was made as part of module 3 with Flatiron School.
 Inspired by Instagram. Picturesque aims to capture that appeal to provide users more interactability 
-through comments instead of likes/follows.
+through comments instead of likes/follows. Posts are updated in order of creation for immediate viewing.
 
 ____________________________
 
@@ -24,7 +24,7 @@ Users must first sign up for an account using their name, email, and a chosen pa
 
 ## Credits:
 
-Big thank you to my instructor, mentor, and cohort-mates (BJ & Ben) for assisting me with debugging errors throughout the process!
+Big thank you to my instructor (Morgan), cohort-mates (BJ & Ben), and friend (Nick) for making this project possible!
 ____________________________
 
 CATCH LIGHT

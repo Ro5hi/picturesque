@@ -3,7 +3,6 @@
     <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
  
     <div class="container">
-        <strong><%= @post.user.username %></strong>
         <p><%= simple_format @post.caption %></p>
     </div>
     <div class="row">
@@ -11,7 +10,11 @@
 
     </div>
     <div class="container">
+    <% if current_user %>
         <%= link_to "Comment Post", new_comment_path(post_id:@post.id) %>
+    <% else %>
+        <%= link_to "Log in or Sign up to Comment", new_user_registration_path %>
+    <% end %>
     </div>
 
     <div class="container">

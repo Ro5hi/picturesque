@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base 
 
-    belongs_to :posts
+    has_many :posts, through: :users 
     belongs_to :user
     
 
