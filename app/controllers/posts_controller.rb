@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit]
+    before_action :set_post, only: [:show, :edit, :update]
 
     def index 
         @posts = Post.order("created_at DESC")
@@ -26,9 +26,8 @@ class PostsController < ApplicationController
     end 
 
     def update
-        @user = User.find_by(params[:id])
-
-        if @post.update(edit_params)
+        if @post
+            @post.update(edit_params)
             redirect_to posts_path(@post)
         else
             redirect_to edit_post_path(@post)
@@ -36,7 +35,7 @@ class PostsController < ApplicationController
     end
 
     def destroy
-        post = Post.find_by(id: params[:id]) 
+        @post = Post.find_by(id: params[:id]) 
 
         if @user.post 
             @post.destroy
@@ -53,7 +52,7 @@ class PostsController < ApplicationController
     end
 
     def edit_params 
-        params.require(:post).permit(:caption, :user_id, :post_id)
+        params.require(:post).permit(:caption, :user_id, :id)
     end 
 
     def set_post
