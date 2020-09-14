@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     end  
 
     def index
-        @posts = Post.active
+        @posts = Post.active.order("created_at DESC")
     end 
 
     private 

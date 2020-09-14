@@ -1,31 +1,16 @@
-<div class="container">    
-    <div class="row">
-        <h2> Suggested Users:
-
-        </h2>
-    </div>
-</div>
-
-<div class="container">    
-    <div class="row">
-        <h2> Check out their profile!
-
-        </h2>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <h3> New Posts! </h3>
-        <% @posts.each do |post| %>
-            <div><strong><%= link_to "#{ post.user.username }", "/profile/#{post.user.username}" %></strong>
-                <div class="col-2">
-                    <%= image_tag post.photo.url, :size => "300x300", class: 'img-responsive post-img' %>
-                    <div class="row">
-                        <p><%= simple_format post.caption %></p>
+<center>
+    <div class="container">
+        <div class="row">
+            <h3> New Posts! </h3>
+            <% @posts.limit(3).each do |post| %>
+                <div><strong><%= link_to "#{ post.user.username }", "/profile/#{post.user.username}" %></strong>
+                    <div class="col-2">
+                        <%= image_tag post.photo.url, :size => "200x200", class: 'img-responsive post-img' %>
+                        <div class="row">
+                        </div>
                     </div>
                 </div>
-            </div>
-        <% end %>
+            <% end %>
+        </div>
     </div>
-</div>
+</center>
