@@ -6,7 +6,13 @@
         <p><%= simple_format @post.caption %></p>
     </div>
 
-
+    <div class="row">
+    <% @post.comments.limit(10).each do |comment| %>
+        <br>	               
+        <strong><%= link_to "#{comment.user.username}",  "/profile/#{comment.user.username}" %></strong>
+           <%= comment.body %>
+    <% end %>	    
+    </div>
 
     </div>
     <div class="container">
@@ -23,7 +29,7 @@
             <p><%= link_to "Edit", edit_post_path(post_id:@post.id) %></p>
             <%= link_to "Back to profile", "/profile/#{@post.user.username}" %>
         <% else %>
-            <%= link_to "View Profile", "/profile/#{@post.user.username}" %>
+            <%= link_to "User Profile", "/profile/#{@post.user.username}" %>
         <% end %>
         </div>
     </div>

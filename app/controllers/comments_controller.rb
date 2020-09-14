@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController    
-    before_action, set_comment, only: [:show, :edit, :update, :destroy]
+    before_action, set_comment, only: [:show, :destroy]
+    
     def new
         @comment = Comment.new 
         @comment.post_id = params[:post_id]
@@ -21,9 +22,7 @@ class CommentsController < ApplicationController
     end 
 
     def destroy
-        @comment = Comment.find(params[:id])
         post = @comment.post 
-
         if @comment.destroy
             redirect_to comments_path, flash: { success: "Comment deleted."}
         else 
@@ -38,8 +37,7 @@ class CommentsController < ApplicationController
     end 
 
     def set_comment 
-        @comment.user_id = current_user.id 
-        @comment.post_id = params[:comment][:post_id]
+        @comment = Comment.find(params[:id])
     end  
 
 end 

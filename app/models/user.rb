@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauth_providers => [:twitter]
         
         has_many :posts
-        has_many :comments, through: :posts
+        has_many :comments
 
         validates :name, presence: true 
         validates :username, presence: true
