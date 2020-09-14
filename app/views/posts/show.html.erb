@@ -1,9 +1,9 @@
 <%= link_to 'Posts', posts_path %>
 
-    <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
+    <%= image_tag @post.user.photo.url, :size => "300x300", :crop => :fill %>
  
     <div class="container">
-        <strong><%= @user.username %></strong>
+        <strong><%= @post.user.username %></strong>
         <p><%= simple_format @post.caption %></p>
     </div>
     <div class="row">

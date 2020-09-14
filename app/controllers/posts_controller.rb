@@ -1,17 +1,16 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:index, :new, :create, :edit, :update, :destroy]
+    before_action :set_post, only: [:show, :edit]
 
     def index 
         @posts = Post.order("created_at DESC")
     end
 
     def new 
-        @post = Post.new(create_params)
+        @post = Post.new
     end
 
     def create
-        @post.user_id = current_user.id if user_signed_in?
-
+        @post = current_user.posts.build(create_params)
         if @post.save
             redirect_to posts_path, notice: { success: "Upload successful." }
         else 
@@ -19,14 +18,13 @@ class PostsController < ApplicationController
         end 
     end 
 
-    def show 
-        @user = User.find_by(params[:id])
-        @post = Post.find_by(params[:id])
-        @comments = Comment.where(post_id: params[:id])
+    def show
+        # @user = User.find_by(username: params[:username])
+        # @post = Post.find_by(params[:id])
     end 
 
     def edit
-        @post = Post.find(params[:id])
+        # @post = Post.find(params[:id])
     end 
 
     def update
@@ -53,7 +51,7 @@ class PostsController < ApplicationController
     private
 
     def create_params 
-        params.require(:post).permit(:photo, :photo_cache, :caption, :user_id)
+        params.require(:post).permit(:photo, :photo_cache, :user_id, :caption)
     end
 
     def edit_params 
@@ -61,6 +59,8 @@ class PostsController < ApplicationController
     end 
 
     def set_post
-        @post = Post.where(params[:id])
+        @post = Post.find_by(id: params[:id])
+        # @user = User.find_by(params[:id])
+        # @user.photo = Post.where(photo: params[:photo])
     end
 end 
