@@ -10,5 +10,5 @@
     <%= button_to "Submit Changes", @post, :method => :patch %>
   <% end %>
 
-  <p><%= button_to "Delete", @post, :method => :delete, :class => 'action destroy' %></p>
+  <p><%= button_to "Delete", @post, value: current_user.username, :method => :delete, :class => 'action destroy' %></p>
   </div>

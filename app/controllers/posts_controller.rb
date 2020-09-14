@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update]
+    before_action :set_post, only: [:show, :edit, :update, :destroy]
 
     def index 
         @posts = Post.order("created_at DESC")
@@ -12,36 +12,33 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(create_params)
         if @post.save
-            redirect_to posts_path, notice: { success: "Upload successful." }
+            redirect_to new_post_path, notice: { success: "Upload successful." }
         else 
             redirect_to new_post_path, notice: { danger: "Upload failed." }
         end 
     end 
 
     def show
-        binding.pry
     end 
 
     def edit
     end 
 
     def update
-        if @post
-            @post.update(edit_params)
-            redirect_to posts_path(@post)
+        if @post.user_id == current_user.id
+           @post.update(edit_params)
+           redirect_to posts_path(@post)
         else
-            redirect_to edit_post_path(@post)
+           redirect_to posts_path, notice: { danger: "No permission." }
         end 
     end
 
     def destroy
-        @post = Post.find_by(id: params[:id]) 
-
-        if @user.post 
-            @post.destroy
-            redirect_to profile_path, notice: { success: "Post deleted." }
+        if @post.user_id == current_user.id
+           @post.destroy
+           redirect_to profile_path, notice: { success: "Post deleted." }
         else 
-            redirect_to posts_path, notice: { danger: "No permission." }
+           redirect_to posts_path, notice: { danger: "No permission." }
         end 
     end
 
@@ -53,7 +50,7 @@ class PostsController < ApplicationController
 
     def edit_params 
         params.require(:post).permit(:caption, :user_id, :id)
-    end 
+    end
 
     def set_post
         @post = Post.find_by(id: params[:id])

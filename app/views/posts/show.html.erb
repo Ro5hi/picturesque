@@ -19,6 +19,7 @@
         <div class="row">
         <% if @post.user == current_user %>
             <p><%= link_to "Edit", edit_post_path(post_id:@post.id) %></p>
+            <%= link_to "Back to profile", "/profile/#{@post.user.username}" %>
         <% else %>
             <%= link_to "User Profile", "/profile/#{@post.user.username}" %>
         <% end %>
