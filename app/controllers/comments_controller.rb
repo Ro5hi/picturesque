@@ -1,6 +1,5 @@
-class CommentsController < ApplicationController
-    
-
+class CommentsController < ApplicationController    
+    before_action, set_comment, only: [:show, :edit, :update, :destroy]
     def new
         @comment = Comment.new 
         @comment.post_id = params[:post_id]
@@ -16,6 +15,9 @@ class CommentsController < ApplicationController
         else 
             redirect_to new_comment_path, flash: { danger: "Comment failed to submit." }
         end 
+    end 
+
+    def show 
     end 
 
     def destroy
@@ -34,5 +36,10 @@ class CommentsController < ApplicationController
     def comment_only
         params.require(:comment).permit(:body, :user_id, :post_id, :id)
     end 
+
+    def set_comment 
+        @comment.user_id = current_user.id 
+        @comment.post_id = params[:comment][:post_id]
+    end  
 
 end 
