@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :omniauthable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauth_providers => [:twitter]
-        
+  
         has_many :posts
         has_many :comments
 

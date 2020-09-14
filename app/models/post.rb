@@ -5,8 +5,10 @@ class Post < ActiveRecord::Base
 
     belongs_to :user
     has_many :comments
-    has_many :hashtags, through :user
 
+    has_many :tags, through: :hashes
+    has_many :hashes, :as => :hashtags
+    
     mount_uploader :photo, PhotoUploader
     serialize :photo, JSON
 
@@ -25,4 +27,14 @@ class Post < ActiveRecord::Base
         self.active = true 
     end 
 
-end 
+    def tags=(names)
+        self.tags= names.split(',').map do |name|
+            Tag.where(params[:name]).first_or_create!
+        end 
+    end 
+
+    def tags 
+        tags.map(&:name).join(", ")
+    end 
+    
+end
