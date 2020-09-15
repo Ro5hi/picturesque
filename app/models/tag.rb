@@ -1,7 +1,7 @@
 class Tag < ActiveRecord::Base 
 
-    has_many :hashes
-    has_many :posts, :through => :hashes, :source => :taggable,
+    has_many :taggs
+    has_many :posts, :through => :taggs, :source => :taggable,
     :source_type => 'Post'
 
 end 

@@ -22,7 +22,12 @@ class PostsController < ApplicationController
         binding.pry
     end 
 
-    def hashtags 
+    def hashtags
+        if params[:tag]
+            @posts = Post.tagged_with(params[:tag])
+        else
+            @posts = Post.all
+        end 
     end 
 
     def edit
@@ -49,11 +54,11 @@ class PostsController < ApplicationController
     private
 
     def create_params 
-        params.require(:post).permit(:photo, :photo_cache, :user_id, :caption)
+        params.require(:post).permit(:photo, :photo_cache, :user_id, :caption, :tag_list)
     end
 
     def edit_params 
-        params.require(:post).permit(:caption, :user_id, :id)
+        params.require(:post).permit(:caption, :tag_list, :user_id, :id)
     end
 
     def set_post

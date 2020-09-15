@@ -6,9 +6,9 @@ class Post < ActiveRecord::Base
     belongs_to :user
     has_many :comments
 
-    has_many :tags, through: :hashes
-    has_many :hashes, :as => :hashtags
-    
+    has_many :taggs 
+    has_many :tags, through: :taggs   
+     
     mount_uploader :photo, PhotoUploader
     serialize :photo, JSON
 
@@ -27,14 +27,21 @@ class Post < ActiveRecord::Base
         self.active = true 
     end 
 
-    def tags=(names)
-        self.tags= names.split(',').map do |name|
-            Tag.where(params[:name]).first_or_create!
-        end 
-    end 
-
-    def tags 
-        tags.map(&:name).join(", ")
-    end 
+    def self.tagged_with(name)
+        Tag.find_by!(name).posts
+    end
     
-end
+    def self.tag_counts
+        Tag.select('tags.*, count(taggs.tag_id) as count').joins(:taggs).group('taggs.tag_id')
+    end
+    
+    def tag_list
+        tags.map(&:name).join(', ')
+    end
+    
+    def tag_list=(names)
+        self.tags = names.split(',').map do |n|
+          Tag.where(name: n.strip).first_or_create!
+        end 
+    end
+end 

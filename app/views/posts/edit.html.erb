@@ -6,6 +6,12 @@
     <%= f.hidden_field :post_id, value: current_user.id, class: 'd-none'%>
   </div>
 
+  <div class="form-group">
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list, placeholder: "Tags separated with comma" %>
+    <%= f.hidden_field :user_id, value: current_user.id, class: 'd-none'%>
+  </div>
+
   <div class="actions">
     <%= button_to "Submit Changes", @post, :method => :patch %>
   <% end %>
