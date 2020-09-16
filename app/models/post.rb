@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
     has_many :taggs 
     has_many :tags, through: :taggs   
-     
+
     mount_uploader :photo, PhotoUploader
     serialize :photo, JSON
 
@@ -44,4 +44,5 @@ class Post < ActiveRecord::Base
           Tag.where(name: n.strip).first_or_create!
         end 
     end
+
 end 

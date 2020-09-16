@@ -18,17 +18,15 @@ class PostsController < ApplicationController
         end 
     end 
 
-    def show
-        binding.pry
+    def tags 
+        tag = Post.find_by(params[:name])
+        @posts = tag.posts 
     end 
 
-    def hashtags
-        if params[:tag]
-            @posts = Post.tagged_with(params[:tag])
-        else
-            @posts = Post.all
-        end 
-    end 
+    def show
+        binding.pry
+        tag = Tag.find_by(params[:name])
+    end  
 
     def edit
     end 
@@ -64,4 +62,5 @@ class PostsController < ApplicationController
     def set_post
         @post = Post.find_by(id: params[:id])
     end
+    
 end 
