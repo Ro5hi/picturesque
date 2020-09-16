@@ -4,13 +4,13 @@ class Tag < ActiveRecord::Base
     has_many :posts, :through => :taggs, :source => :taggable,
     :source_type => 'Post'
 
-    # scope -> :searchable => where(searchable: true) 
+    after_create :set_searchable 
 
-    def self.searchable 
-        if @post.tags.present?
+    scope :searchable, -> { where(searchable: true) } 
+
+    def set_searchable 
+        if @post.tag_list.present?
             self.searchable = true 
-        else
-            self.searchable = nil
         end 
     end 
 

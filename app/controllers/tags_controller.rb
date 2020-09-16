@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
 
-    before_action :set_tag, only: [:index, :show]
+    before_action :set_tag, only: [:show]
 
     def show
         if params[:tags]
