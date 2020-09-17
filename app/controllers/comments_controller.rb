@@ -21,14 +21,14 @@ class CommentsController < ApplicationController
     def show 
     end 
 
-    def destroy
-        post = @comment.post 
-        if @comment.destroy
-            redirect_to comments_path, flash: { success: "Comment deleted."}
-        else 
-            redirect_to comments_path, flash: { danger: "Could not delete comment."}
-        end 
-    end 
+    # def destroy
+    #     post = @comment.post 
+    #     if @comment.destroy
+    #         redirect_to comments_path, flash: { success: "Comment deleted."}
+    #     else 
+    #         redirect_to comments_path, flash: { danger: "Could not delete comment."}
+    #     end 
+    # end 
 
     private 
 

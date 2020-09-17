@@ -1,8 +1,5 @@
-  <div class="alert alert-danger" role="alert">
-    <% if @post && @post.errors.any? %>
-      <h2><strong><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2></strong>
-    <% end %>  
-  </div>
+<p> <%= render partial: 'layouts/errors', locals: {object: @post}  %> </p>
+
   
   <%= form_for Post.new, :html => {:multipart => true} do |f| %>
     <div class="form-group">

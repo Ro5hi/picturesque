@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
     validates_presence_of :photo
     validates :caption, length: { maximum: 150 }
 
-    before_create :set_active 
+    after_create :set_active 
 
     scope :active, -> { where(active: true) }
 
@@ -27,13 +27,9 @@ class Post < ActiveRecord::Base
         self.active = true 
     end 
 
-    def self.tagged_with(name)
-        Tag.find_by!(name).posts
-    end
-    
-    def self.tag_counts
-        Tag.select('tags.*, count(taggs.tag_id) as count').joins(:taggs).group('taggs.tag_id')
-    end
+    # def self.tagged_with(name)
+    #     Tag.find_by!(name).posts
+    # end
     
     def tag_list
         tags.map(&:name).join(', ')

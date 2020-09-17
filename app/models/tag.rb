@@ -9,9 +9,7 @@ class Tag < ActiveRecord::Base
     scope :searchable, -> { where(searchable: true) } 
 
     def set_searchable 
-        if @post.tag_list.present?
-            self.searchable = true 
-        end 
+        self.searchable = true 
     end 
 
 end 

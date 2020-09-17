@@ -19,13 +19,11 @@ class PostsController < ApplicationController
     end 
 
     def tags 
-        @post = Post.find_by(params[:tag])
-        @posts = post.tags  
+        @post = Post.find_by(params[:tag])  
     end 
 
     def show
         binding.pry
-        @post.tags = Tag.find_by(name: params[:name])
     end  
 
     def edit
