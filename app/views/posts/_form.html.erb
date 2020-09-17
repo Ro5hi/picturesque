@@ -1,6 +1,4 @@
 <p> <%= render partial: 'layouts/errors', locals: {object: @post}  %> </p>
-  <% flash.now[:success] %>
-  <% flash.now[:danger] %>
 
   
   <%= form_for Post.new, :html => {:multipart => true} do |f| %>

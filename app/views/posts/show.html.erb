@@ -16,7 +16,7 @@
     <div class="row">
     <% @post.comments.limit(10).each do |comment| %>
         <br>	               
-        <strong><%= link_to "#{comment.user.username}",  "/profile/#{comment.user.username}" %>:</strong>
+        <strong><%= link_to "#{comment.user.username}", "/profile/#{comment.user.username}" %>:</strong>
            <%= comment.body %>
     <% end %>	    
     </div>

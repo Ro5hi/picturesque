@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
     validates_presence_of :photo
     validates :caption, length: { maximum: 150 }
 
-    after_create :set_active 
+    before_create :set_active 
 
     scope :active, -> { where(active: true) }
 

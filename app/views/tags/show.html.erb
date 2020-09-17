@@ -1,2 +1,5 @@
-<h1>Posts Tagged with <%= @tag.name %></h1>
+<h1>Related posts</h1>
 
+<% @post.tags.each do |post| %>
+    <li><%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %></li>
+<% end %>

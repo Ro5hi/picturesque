@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
 
   get 'profile/:username' => "users#show", as: :profile
-  get 'tags/#{tag.name}' => "tags#show"
+  get 'tag/show/:tag' => "tags#show"
   
   devise_for :users, controllers:{omniauth_callbacks: "omniauth_callbacks"}
   devise_scope :user do
