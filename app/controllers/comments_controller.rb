@@ -12,10 +12,10 @@ class CommentsController < ApplicationController
         @comment.post_id = params[:comment][:post_id]
         
         if @comment.save 
-            flash[:success] = "Comment submitted."
-            redirect_to posts_path
+            flash[:notice] = "Comment submitted."
+            redirect_to @comment
         else 
-            flash[:danger] = "Comment failed to submit."
+            flash[:notice] = "Comment failed to submit."
             redirect_to new_comment_path
         end 
     end 

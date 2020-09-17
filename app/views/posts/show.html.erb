@@ -1,3 +1,6 @@
+<p> <%= render partial: 'layouts/messages', locals: {object: @post}  %> </p>
+
+
 <%= link_to 'All Posts', posts_path %>
 
     <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>

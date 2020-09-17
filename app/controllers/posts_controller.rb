@@ -12,11 +12,9 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(create_params)
         if @post.save
-            flash[:success] = "Upload successful."
-            redirect_to posts_path
-        else 
-            flash[:danger] = "Upload failed."
-            redirect_to new_post_path
+            redirect_to posts_path(@post), notice: "Posted."
+        else
+            redirect_to new_post_path, notice: "Failed."
         end 
     end 
 
@@ -30,19 +28,21 @@ class PostsController < ApplicationController
     def update
         if @post.user_id == current_user.id
            @post.update(edit_params)
+           flash[:notice] = "Post updated."
            redirect_to posts_path(@post)
         else
-           redirect_to posts_path, notice: { danger: "No permission." }
+            flash[:notice] = "No permission to edit."
+           redirect_to posts_path
         end 
     end
 
     def destroy
         if @post.user_id == current_user.id
            @post.destroy
-           flash[:success] = "Post deleted"
+           flash[:notice] = "Post deleted."
            redirect_to posts_path
         else 
-           flash[:danger] = "No permission."
+           flash[:notice] = "No permission to delete."
            redirect_to posts_path
         end 
     end

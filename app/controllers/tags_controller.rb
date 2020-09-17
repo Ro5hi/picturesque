@@ -4,11 +4,13 @@ class TagsController < ApplicationController
 
     def index
         @tags = Tag.all
-        @tag = Tag.find_by(name: params[:name])
     end
 
     def show 
-        @post = Post.find_by(params[:id])
+        binding.pry
+        @post = Post.find_by(params[:tag])
+        @tag = Tag.find_by(params[:name])
+        @tags = Tag.find_by(params[:id])
     end 
 
     private

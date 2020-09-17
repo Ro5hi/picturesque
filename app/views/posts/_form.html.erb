@@ -1,4 +1,4 @@
-<p> <%= render partial: 'layouts/errors', locals: {object: @post}  %> </p>
+<p> <%= render partial: 'layouts/messages', locals: {object: @post}  %> </p>
 
   
   <%= form_for Post.new, :html => {:multipart => true} do |f| %>

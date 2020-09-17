@@ -1,5 +1,9 @@
 <h1>Related posts</h1>
 
-<% @post.tags.each do |post| %>
-    <li><%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %></li>
-<% end %>
+<div class="container">
+    <ul>
+        <% @post.tags.each do |post| %>
+            <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
+        <% end %>
+    </ul>
+</div>
