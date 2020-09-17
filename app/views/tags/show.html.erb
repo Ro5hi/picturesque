@@ -1,6 +1,2 @@
-<div class="container">
-<p><% @posts.each do |post| if @post.tag_list.present?%>
-        <%= image_tag post.photo.url, :size => "300x300", class: 'img-responsive post-img' %>
-   <% end %>
-</p>
-</div>
+<h1>Posts Tagged with <%= @tag.name %></h1>
+

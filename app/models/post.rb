@@ -25,11 +25,7 @@ class Post < ActiveRecord::Base
 
     def set_active 
         self.active = true 
-    end 
-
-    # def self.tagged_with(name)
-    #     Tag.find_by!(name).posts
-    # end
+    end
     
     def tag_list
         tags.map(&:name).join(', ')

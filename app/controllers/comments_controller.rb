@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController    
-    before_action, set_comment, only: [:show, :destroy]
+    before_action set_comment, only: [:show]
     
     def new
         @comment = Comment.new 
@@ -12,23 +12,16 @@ class CommentsController < ApplicationController
         @comment.post_id = params[:comment][:post_id]
         
         if @comment.save 
-            redirect_to posts_path, flash: { success: "Comment submitted." }
+            flash[:success] = "Comment submitted."
+            redirect_to posts_path
         else 
-            redirect_to new_comment_path, flash: { danger: "Comment failed to submit." }
+            flash[:danger] = "Comment failed to submit."
+            redirect_to new_comment_path
         end 
     end 
 
     def show 
     end 
-
-    # def destroy
-    #     post = @comment.post 
-    #     if @comment.destroy
-    #         redirect_to comments_path, flash: { success: "Comment deleted."}
-    #     else 
-    #         redirect_to comments_path, flash: { danger: "Could not delete comment."}
-    #     end 
-    # end 
 
     private 
 

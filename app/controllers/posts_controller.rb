@@ -12,14 +12,12 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(create_params)
         if @post.save
-            redirect_to new_post_path, notice: { success: "Upload successful." }
+            flash[:success] = "Upload successful."
+            redirect_to post_path
         else 
-            redirect_to new_post_path, notice: { danger: "Upload failed." }
+            flash[:danger] = "Upload failed."
+            redirect_to new_post_path
         end 
-    end 
-
-    def tags 
-        @post = Post.find_by(params[:tag])  
     end 
 
     def show

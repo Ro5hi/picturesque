@@ -1,0 +1,7 @@
+<div class="container">
+  <ul>
+    <% @tags.each do |tag| %>
+    <li><%= link_to "#{tag.name}", "tag/#{tag.name}" %></li>
+    <% end %>
+  </ul>
+</div>
