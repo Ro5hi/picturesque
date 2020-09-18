@@ -16,15 +16,15 @@ class Post < ActiveRecord::Base
     validates :caption, length: { maximum: 150 }
 
     before_create :set_active 
-
+    # saves posts in DB 
     scope :active, -> { where(active: true) }
-
-    def photo_presence
-        errors.add(:photo, "Can't be blank.") unless photo.attached?
-    end 
 
     def set_active 
         self.active = true 
+    end
+
+    def self.tagged_with(name)
+        Tag.find_by_name!(name).posts
     end
     
     def tag_list

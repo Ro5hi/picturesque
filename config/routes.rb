@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :comments, only: [:new, :create, :show]
-  resources :tags, only: [:index, :show]
+  resources :tags, only: [:index, :show, :tag]
+
+  get 'tag/:name' => "tags#show"
 
   get 'profile/:username' => "users#show", as: :profile
-  get 'tag/show/:tag' => "tags#show"
   
   devise_for :users, controllers:{omniauth_callbacks: "omniauth_callbacks"}
   devise_scope :user do

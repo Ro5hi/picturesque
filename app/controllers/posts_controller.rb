@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_tag, only: [:show]
 
     def index 
         @posts = Post.order("created_at DESC")
@@ -60,5 +61,9 @@ class PostsController < ApplicationController
     def set_post
         @post = Post.find_by(id: params[:id])
     end
+
+    def set_tag 
+        @tag = Tag.find_by(params[:name])
+    end 
     
 end 

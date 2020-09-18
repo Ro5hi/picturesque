@@ -5,12 +5,18 @@ class Tag < ActiveRecord::Base
     :source_type => 'Post'
 
     after_create :set_searchable 
-
+    # tags searchable upon creation
     scope :searchable, -> { where(searchable: true) } 
 
     def set_searchable 
         self.searchable = true 
     end 
+    
+    def tag_list
+        self.tags.collect do |tag|
+          tag.name
+        end.join(", ")
+    end
     
     def tag_list=(tags_string)
         tag_names = tags_string.split(",").collect{|s| s.strip.downcase}.uniq

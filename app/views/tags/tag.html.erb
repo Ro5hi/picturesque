@@ -1,0 +1,9 @@
+<h1>Related posts</h1>
+
+<div class="container">
+    <ul>
+        <% @tag.taggs do |tagg| %>
+            <%= image_tag post.photo.url, :size => "300x300", :crop => :fill %>
+        <% end %>
+    </ul>
+</div>

@@ -1,22 +1,31 @@
 class TagsController < ApplicationController
 
-    before_action :set_tag, only: [:index, :show]
+    before_action :set_tag, only: [:index]
+    before_action :set_tag_name, only: [:show]
 
     def index
-        @tags = Tag.all
+        @tags = Tag.includes(params[:name])
+        @tagg = Tagg.includes(params[:tag_id])
     end
 
-    def show 
-        binding.pry
-        @post = Post.find_by(params[:tag])
-        @tag = Tag.find_by(params[:name])
-        @tags = Tag.find_by(params[:id])
-    end 
+    def show
+        tag = Tag.find_by(name: params[:name])
+        @tagg = Tagg.where(tag_id: tag.id)
+        post_ids = @tagg.map {|t| t.post_id}
+        @posts = Post.where(id: post_ids)
+        if @posts.length == 0
+            redirect_to tags_path, notice: "No posts with this tag."
+        end             
+    end
 
     private
 
     def set_tag 
         @tag = Tag.where(params[:id])
+    end 
+
+    def set_tag_name
+        @tag = Tag.find_by(name: params[:name])
     end 
 
 end 
