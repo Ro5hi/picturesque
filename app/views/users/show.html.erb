@@ -1,3 +1,8 @@
+<div class="alert alert-info">
+    <% if flash[:notice] %>
+        <%= flash[:notice] %>
+    <% end %>
+</div>
 <center>    
     <div class="container">
         <div class="row">
@@ -9,11 +14,11 @@
                         <p><%= simple_format @user.description %></p>
                     </div>
                     <br>
-                <div class="container">
+                    <div class="container">
                         <div class="row">
                             <div class="col-md-8">
                                 <% @posts.each do |post| %>
-                                    <a href=<%= "/posts/#{post.id}" %>>
+                                    <a href=<%= "/#{@user.username}/posts/#{post.id}" %>>
                                 <%= image_tag post.photo.url, :size => "150x150", class: 'img-responsive post-img' %>
                             <% end %> 
                         </div>

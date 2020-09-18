@@ -1,7 +1,6 @@
 class TagsController < ApplicationController
 
     before_action :set_tag, only: [:index]
-    before_action :set_tag_name, only: [:show]
 
     def index
         @tags = Tag.includes(params[:name])
@@ -22,10 +21,6 @@ class TagsController < ApplicationController
 
     def set_tag 
         @tag = Tag.where(params[:id])
-    end 
-
-    def set_tag_name
-        @tag = Tag.find_by(name: params[:name])
     end 
 
 end 

@@ -5,10 +5,10 @@
     <%= f.hidden_field :id, value: @comment.id %>
     <%= f.hidden_field :post_id, value: @comment.post_id %>
     <div class="input-group">
-        <%= f.submit "Comment", class: "btn btn-success float-right" %>
         <div class="input-group-append">
             <%= f.text_field :body, placeholder: "Comment on this post." %>               
         </div>
+    <%= f.submit "Submit Comment", class: "btn btn-success float-right" %>
     </div>
 <% end %>
 </div>

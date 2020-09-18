@@ -15,12 +15,12 @@ class PostsController < ApplicationController
         if @post.save
             redirect_to posts_path(@post), notice: "Posted."
         else
-            redirect_to new_post_path, notice: "Failed."
+            @post == 0 
+            redirect_to new_post_path, notice: "No photo attached."
         end 
     end 
 
     def show
-        binding.pry
     end  
 
     def edit

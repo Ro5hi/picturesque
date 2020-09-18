@@ -1,7 +1,23 @@
 <center>
+    
+<div class="container">
+    <h1>| P I C T U R E S Q U E |
+        <h4>
+            <p> 
+                You can make posts and upload a photo with a tag to share with other users.
+                Customize your personal profile page with a description about yourself and 
+                your own profile picture. 
+            </p>
+        </h4>
+    </h1>
+</div>
+
+
+
+
     <div class="container">
         <div class="row">
-            <h3> New Posts! </h3>
+            <h3> New Posts by the community! </h3>
             <% @posts.limit(3).each do |post| %>
                 <div><strong><%= link_to "#{ post.user.username }", "/profile/#{post.user.username}" %></strong>
                     <div class="col-2">
