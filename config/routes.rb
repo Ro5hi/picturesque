@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
   root 'users#index'  
 
-  resources :posts
-  resources :tags
-  resources :comments, only: [:new, :create]
-  resources :posts, only: [:new, :show, :create]
-  
+  resources :tags, only: [:index, :show]
+
+  resources :users, only: [:show] do 
+    resources :posts, only: [:index, :new, :create, :destroy, :update, :edit]
+    resources :comments, only: [:new, :create]
+  end 
+
   get '/tag/:name' => "tags#show"
   get '/:username/posts/:id' => "posts#show"
   get '/profile/:username' => "users#show", as: :profile
@@ -16,5 +18,5 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
     get '/auth/twitter' => 'devise/omniauth_callbacks#passthru'
     get '/auth/twitter/callback' => 'omniauth_callbacks#twitter'
-  end 
+  end
 end

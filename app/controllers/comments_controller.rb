@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
             redirect_to @comment.post
         else 
             flash[:notice] = "Comment failed to submit."
-            redirect_to new_comment_path
+            redirect_to new_user_comment_path
         end 
     end 
 
