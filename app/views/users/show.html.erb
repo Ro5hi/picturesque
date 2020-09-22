@@ -1,7 +1,5 @@
-<div class="alert alert-info">
-    <% if flash[:notice] %>
-        <%= flash[:notice] %>
-    <% end %>
+<p> <%= render partial: 'layouts/messages', locals: {object: @post}  %> </p>
+
 </div>
 <center>    
     <div class="container">
@@ -16,7 +14,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8">
-                                <% @posts.each do |post| %>
+                                <% @user.posts.each do |post| %>
                                     <a href=<%= "/#{@user.username}/posts/#{post.id}" %>>
                                 <%= image_tag post.photo.url, :size => "150x150", class: 'img-responsive post-img' %>
                             <% end %> 

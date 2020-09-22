@@ -1,10 +1,9 @@
 <p> <%= render partial: 'layouts/messages', locals: {object: @post}  %> </p>
 
 <div class="container">
-<%= form_for [current_user, @post, @comment] do |f| %>
-    <%= f.hidden_field :user_id, value: current_user %>
-    <%= f.hidden_field :post_id, value: @comment.post_id %>
+<%= form_for ([@user, @post, @comment]) do |f| %>
     <%= f.hidden_field :id, value: @comment %>
+    <%= f.hidden_field :post_id, value: @comment.post_id %>
     <div class="input-group">
         <div class="input-group-append">
             <%= f.text_field :body, placeholder: "Comment on this post." %>               

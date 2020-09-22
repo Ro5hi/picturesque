@@ -1,15 +1,21 @@
 class CommentsController < ApplicationController    
 
+    before_action :get_post, only: [:show]
+
     def new
         @comment = Comment.new
         @user = current_user
-        @post = Post.find_by(params[:id])
+        @post = Post.find_by(id: params[:id])
     end
 
+    def show 
+    end 
+
     def create
-        
+        binding.pry
         @comment = current_user.comments.build(comment_params)
         @comment.post_id = params[:post_id]
+        @post = params[:id]
 
         if @comment.save 
             flash[:notice] = "Comment submitted."
@@ -26,7 +32,11 @@ class CommentsController < ApplicationController
     private 
 
     def comment_params
-        params.require(:comment).permit(:user_id, :post_id, :body)
+        params.require(:comment).permit(:body, :post_id)
+    end 
+
+    def get_post 
+        @post = Post.find_by(id: params[:post_id])
     end 
 
 end 
