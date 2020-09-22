@@ -2,14 +2,15 @@
 
 <%= stylesheet_link_tag "posts" %>
 
+<center>
 <div class="show-posts">
     <%= link_to 'Back To Posts', user_posts_path(current_user.id) %>
 </div>
-    <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
+    <%= image_tag @post.photo.url, :size => "600x600", :crop => :fill %>
  
-    <div class="show-posts">
+    <div class="caption">
         <h4>Posted on: <%= @post.created_at%></h4>
-        <p><%= simple_format @post.caption %></p>
+        <p>Caption: <%= simple_format @post.caption %></p>
     </div>
 
     <div class="caption">
@@ -22,7 +23,7 @@
     <% @post.comments.limit(10).each do |comment| %>
         <br>	               
         <strong><%= link_to "#{comment.user.username}", "/profile/#{comment.user.username}" %>:</strong>
-           <%= comment.body %>
+           <%= comment.body %><br><h6><p style="text-muted"><%= comment.created_at %></p></h6> 
     <% end %>	    
     </div>
 
@@ -46,3 +47,4 @@
         <% end %>
         </div>
     </div>
+</center>

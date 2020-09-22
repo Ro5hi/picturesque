@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         @comment.user_id = current_user.id
         @comment.post_id = params[:comment][:post_id] 
-        binding.pry
+        
         if @comment.save 
             flash[:notice] = "Comment submitted."
             redirect_to @comment.post
