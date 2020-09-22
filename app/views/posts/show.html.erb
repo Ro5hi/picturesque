@@ -1,7 +1,7 @@
 <p> <%= render partial: 'layouts/messages', locals: {object: @post}  %> </p>
 
 
-<%= link_to 'All Posts', user_posts_path %>
+<%= link_to 'All Posts', user_posts_path(current_user.id) %>
 
     <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
  
@@ -28,7 +28,7 @@
     <div class="container">
     <br>
     <% if current_user %>
-        <%= link_to "Comment on Post", new_user_comment_path(post_id:@post.id) %>
+        <%= link_to "Comment on Post", new_user_post_comment_path(current_user, @post, @comment) %>
     <% else %>
         <%= link_to "Log in or Sign up to Comment", new_user_registration_path %>
     <% end %>
@@ -37,7 +37,7 @@
     <div class="container">
         <div class="row">
         <% if @post.user == current_user %>
-            <p><%= link_to "Edit", edit_user_post_path(post_id:@post.id) %></p>
+            <p><%= link_to "Edit", edit_user_post_path(current_user, @post) %></p>
             <%= link_to "Back to profile", profile_path(@post.user.username) %>
         <% else %>
             <%= link_to "Back to Profile", profile_path(@post.user.username) %>

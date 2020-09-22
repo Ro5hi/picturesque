@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
-    before_action :set_user, only: [:show]
+    before_action :set_profile, only: [:show]
+    before_action :set_posts, only: [:show]
 
     def show
-        @posts = @user.posts
     end  
 
     def index
@@ -12,8 +12,12 @@ class UsersController < ApplicationController
 
     private 
 
-    def set_user 
+    def set_profile
         @user = User.find_by_username(params[:username])
+    end
+
+    def set_posts 
+        @posts = @user.posts
     end 
-    
+
 end 

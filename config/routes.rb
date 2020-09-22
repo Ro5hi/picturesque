@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index, :show]
 
-  resources :users, only: [:show] do 
-    resources :posts, only: [:index, :new, :create, :destroy, :update, :edit]
-    resources :comments, only: [:new, :create]
-  end 
+  resources :users do 
+    resources :posts do
+      resources :comments, only: [:new, :create]
+    end
+  end
 
   get '/tag/:name' => "tags#show"
   get '/:username/posts/:id' => "posts#show"

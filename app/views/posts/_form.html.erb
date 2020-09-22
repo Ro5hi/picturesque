@@ -1,7 +1,7 @@
 <p> <%= render partial: 'layouts/messages', locals: {object: @post}  %> </p>
 
   
-  <%= form_for Post.new, :html => {:multipart => true} do |f| %>
+  <%= form_for [current_user, @post], :html => {:multipart => true} do |f| %>
     <div class="form-group">
       <%= f.label :photo %><br />
       <%= f.file_field :photo %>

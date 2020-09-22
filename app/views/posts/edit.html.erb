@@ -2,7 +2,7 @@
 
 
 <h1> Edit Post </h1>
-<%= form_for @post do |f| %>
+<%= form_for [current_user, @post] do |f| %>
   <div class="form-group">
     <%= f.label :caption %>
     <%= f.text_field :caption %>
@@ -16,8 +16,8 @@
   </div>
 
   <div class="actions">
-    <%= button_to "Submit Changes", @post, :method => :patch %>
+    <%= button_to "Submit Changes", [current_user, @post], :method => :patch %>
   <% end %>
 
-  <p><%= button_to "Delete", @post, value: current_user.username, :method => :delete, :class => 'action destroy' %></p>
+  <p><%= button_to "Delete", [current_user, @post], value: current_user.username, :method => :delete, :class => 'action destroy' %></p>
   </div>
