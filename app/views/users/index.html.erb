@@ -7,10 +7,7 @@
         <h1> P I C T U R E S Q U E
             <h4>
                 <p> 
-                    You can make posts and upload a photo with a tag to share with other users.
-                    <br>
-                    Customize your personal profile page with a description about yourself and 
-                    your own profile picture. 
+                    Express yourself.
                 </p>
             </h4>
         </h1>
@@ -18,15 +15,9 @@
 
         <div class="community-posts">
             <div class="row">
-                <h3> New Posts by the community! </h3>
+                <h5> Be inspired. </h5>
                 <% @posts.limit(3).each do |post| %>
-                    <div><strong><%= link_to "#{ post.user.username }", "/profile/#{post.user.username}" %></strong>
-                        <div class="col-2">
-                            <%= image_tag post.photo.url, :size => "200x200", class: 'img-responsive post-img' %>
-                            <div class="row">
-                            </div>
-                        </div>
-                    </div>
+                    <%= image_tag post.photo.url, :size => "200x200", class: 'img-responsive post-img' %>
                 <% end %>
             </div>
         </div>
