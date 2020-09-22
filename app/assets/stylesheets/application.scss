@@ -3,3 +3,13 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 
+.container-fluid {
+background: white;
+height: 70px;
+left: 0;
+max-width: none;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 50;
+}
