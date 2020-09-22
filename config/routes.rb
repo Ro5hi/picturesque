@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
 
   resources :users do 
-    resources :posts do
-      resources :comments
-    end
+    resources :posts
   end
+
+  resources :posts, shallow: true do 
+    resources :comments
+  end 
 
   get '/tag/:name' => "tags#show"
   get '/:username/posts/:id' => "posts#show"

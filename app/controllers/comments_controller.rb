@@ -1,28 +1,26 @@
 class CommentsController < ApplicationController    
 
-    before_action :get_post, only: [:show]
+    before_action :get_post, only: [:new, :show, :create]
 
     def new
         @comment = Comment.new
-        @user = current_user
-        @post = Post.find_by(id: params[:id])
+        @comment.post_id = params[:post_id] 
     end
 
     def show 
     end 
 
     def create
+        @comment = Comment.new(comment_params)
+        @comment.user_id = current_user.id
+        @comment.post_id = params[:comment][:post_id] 
         binding.pry
-        @comment = current_user.comments.build(comment_params)
-        @comment.post_id = params[:post_id]
-        @post = params[:id]
-
         if @comment.save 
             flash[:notice] = "Comment submitted."
-            redirect_to user_post_path(current_user, @comment.post)
+            redirect_to @comment.post
         else 
             flash[:notice] = "Comment failed to submit."
-            redirect_to user_post_path
+            redirect_to new_post_comment_path
         end 
     end 
 
@@ -32,7 +30,7 @@ class CommentsController < ApplicationController
     private 
 
     def comment_params
-        params.require(:comment).permit(:body, :post_id)
+        params.require(:comment).permit(:body, :post_id, :user_id, :id)
     end 
 
     def get_post 

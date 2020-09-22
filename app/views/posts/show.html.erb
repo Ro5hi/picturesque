@@ -28,7 +28,7 @@
     <div class="container">
     <br>
     <% if current_user %>
-        <%= link_to "Comment on Post", new_user_post_comment_path(current_user, @post, @comment) %>
+        <%= link_to "Comment on Post", new_post_comment_path(@post, @comment) %>
     <% else %>
         <%= link_to "Log in or Sign up to Comment", new_user_registration_path %>
     <% end %>
