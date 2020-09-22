@@ -1,15 +1,16 @@
 <p> <%= render partial: 'layouts/messages', locals: {object: @user}  %> </p>
 
+<%= stylesheet_link_tag "forms" %>
 
+<div class="heading">
 <h1> Edit Post </h1>
+</div>
+
 <%= form_for [current_user, @post] do |f| %>
-  <div class="form-group">
+  <div class="form">
     <%= f.label :caption %>
     <%= f.text_field :caption %>
     <%= f.hidden_field :post_id, value: current_user.id, class: 'd-none'%>
-  </div>
-
-  <div class="form-group">
     <%= f.label :tag_list %>
     <%= f.text_field :tag_list, placeholder: "Tags separated with comma" %>
     <%= f.hidden_field :user_id, value: current_user.id, class: 'd-none'%>
@@ -19,5 +20,6 @@
     <%= button_to "Submit Changes", [current_user, @post], :method => :patch %>
   <% end %>
 
-  <p><%= button_to "Delete", [current_user, @post], value: current_user.username, :method => :delete, :class => 'action destroy' %></p>
+  <div class="actions">
+  <p><%= button_to "Delete Photo", [current_user, @post], value: current_user.username, :method => :delete, :class => 'action destroy' %></p>
   </div>

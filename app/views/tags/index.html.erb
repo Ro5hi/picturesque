@@ -1,13 +1,20 @@
-<div class="alert alert-info">
+<%= stylesheet_link_tag "posts" %>
+<center>
+<div class="alert">
     <% if flash[:notice] %>
         <%= flash[:notice] %>
     <% end %>
 </div>
 
-<div class="container">
+<div class="caption">
+  <h1>View Posts by Tags</h1>
+</div>
+
+<div class="caption">
   <ul>
     <% @tags.each do |tag| %>
-    <li><%= link_to "#{tag.name}", "tag/#{tag.name}" %></li>
+    <%= link_to "#{tag.name}", "tag/#{tag.name}" %></li>
     <% end %>
   </ul>
 </div>
+<center>

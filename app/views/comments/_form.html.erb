@@ -1,6 +1,8 @@
 <p> <%= render partial: 'layouts/messages', locals: {object: @post}  %> </p>
 
-<div class="container">
+<%= stylesheet_link_tag "comments" %>
+
+<div class="comment box">
 <%= form_for [@post, @comment] do |f| %>
     <%= f.hidden_field :id, value: @comment %>
     <%= f.hidden_field :post_id, value: @comment.post_id %>

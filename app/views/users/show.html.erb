@@ -21,12 +21,12 @@
                                     <br>
                                 </div>
                                     
-                                    <div class="profile-posts">
+                                    <div class="gallery">
                                         <div class="col-md-8">
                                             <% @user.posts.each do |post| %>
-                                                <a href=<%= "/#{@user.username}/posts/#{post.id}" %>>
-                                            <%= image_tag post.photo.url, :size => "150x150", class: 'img-responsive post-img' %>
-                                            <% end %> 
+                                            <a href=<%= "/#{@user.username}/posts/#{post.id}" %>>
+                                                <%= image_tag post.photo.url, :size => "150x150", class: 'img-responsive post-img' %>
+                                            <% end %>
                                         </div>
                                     </div>
 </center>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html style="padding: 95px;">
 
+<body>
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -9,41 +10,27 @@
 
       <%= csrf_meta_tags %>   
   </head>
-
+<div class="nav">
   <nav class="navbar navbar-light navbar-expand-md">
-  <div class="container-fluid"><a class="navbar-brand" style="color: rgba(116,245,56,0.9);">Picturesque</a>
+    <div class="container-fluid"><a class="navbar-brand" >PICTURESQUE</a>
         <ul class="nav navbar-nav">
           <%- if current_user %>
-        <li>
-          <%= link_to "Logout", destroy_user_session_path(current_user), method: :delete %>
-        </li>
-        <li>
-          <%= link_to "New Post", new_user_post_path(current_user) %>
-        </li>
-        <li>
-          <%= link_to "Posts", user_posts_path(current_user.id) %>
-        </li>
-        <li>
-          <%= link_to "Profile", profile_path(current_user.username) %>
-        </li>
-        <li>
-          <%= link_to "Edit Profile", edit_user_registration_path(current_user) %>
-        </li>  
-        <li>
-          <%= link_to "Search by tag", tags_path %>
-        </li>  
-          <% else %>
-        <li>
-          <%= link_to "Login", new_user_session_path %>
-        </li>
-        <li>
-          <%= link_to "Register", new_user_registration_path%>
-        </li>
-          <% end %>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Navigation">
+            <button type="button" class="btn btn-outline-primary"><%= link_to "New Post", new_user_post_path(current_user) %></button>
+            <button type="button" class="btn btn-outline-primary"><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></button>
+            <button type="button" class="btn btn-outline-primary"><%= link_to "Posts", user_posts_path(current_user.id) %></button>
+            <button type="button" class="btn btn-outline-primary"><%= link_to "Filter By Tags", tags_path %></button>
+            <button type="button" class="btn btn-outline-primary"><%= link_to "Profile", profile_path(current_user.username) %></button>
+            <button type="button" class="btn btn-outline-primary"><%= link_to "Logout", destroy_user_session_path(current_user), method: :delete %></button>
+            <% else %>        
+            <button type="button" class="btn btn-outline-primary"><%= link_to "Login", new_user_session_path %></button>
+            <button type="button" class="btn btn-outline-primary"><%= link_to "Register", new_user_registration_path%></button>
+            <% end %>
+          </div>
         </ul>
-  </div>
-  </div>
+    </div>
   </nav>
+</div>
 
   <%= yield %>
 

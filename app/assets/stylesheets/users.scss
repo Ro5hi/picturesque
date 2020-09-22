@@ -1,28 +1,35 @@
 .profile-photo {
-    background-color: black;
     margin-bottom: 20px;
     padding: 18px;
-    border: 1px solid black;
+
+    border: 2px solid black;
 }
 
 .profile-info {
     background-color: white;
     margin-bottom: 20px;
     margin-top: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .index {
     background-color: white;
     margin-bottom: 50px;
     margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid whitesmoke;;
 }
 
 .community-posts {
+    font-family: Arial, Helvetica, sans-serif;
     background-color: white;
 }
 
-.profile-posts {
-    border: 1px solid  #e6e6e6;
-    height: 150px;
+.gallery {
+    padding: 15px;
     width: 100%;
+}
+
+.gallery:responsive {
+    border: 1px solid black;
 }

@@ -1,22 +1,24 @@
 <p> <%= render partial: 'layouts/messages', locals: {object: @post}  %> </p>
 
+<%= stylesheet_link_tag "posts" %>
 
-<%= link_to 'All Posts', user_posts_path(current_user.id) %>
-
+<div class="show-posts">
+    <%= link_to 'Back To Posts', user_posts_path(current_user.id) %>
+</div>
     <%= image_tag @post.photo.url, :size => "300x300", :crop => :fill %>
  
-    <div class="container">
+    <div class="show-posts">
         <h4>Posted on: <%= @post.created_at%></h4>
         <p><%= simple_format @post.caption %></p>
     </div>
 
-    <div class="container">
+    <div class="caption">
     <p>Tags:
        <%= "#{@post.tag_list}" %>
     </p>
     </div>
 
-    <div class="row">
+    <div class="comments">
     <% @post.comments.limit(10).each do |comment| %>
         <br>	               
         <strong><%= link_to "#{comment.user.username}", "/profile/#{comment.user.username}" %>:</strong>
@@ -25,7 +27,7 @@
     </div>
 
     </div>
-    <div class="container">
+    <div class="actions">
     <br>
     <% if current_user %>
         <%= link_to "Comment on Post", new_post_comment_path(@post, @comment) %>
@@ -34,7 +36,7 @@
     <% end %>
     </div>
     <br>
-    <div class="container">
+    <div class="actions">
         <div class="row">
         <% if @post.user == current_user %>
             <p><%= link_to "Edit", edit_user_post_path(current_user, @post) %></p>
