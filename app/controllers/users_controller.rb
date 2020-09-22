@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
     before_action :set_profile, only: [:show]
-    before_action :profile_photo, only: [:show]
 
     def show
         photo = params[:photo]
@@ -21,8 +20,5 @@ class UsersController < ApplicationController
         @user = User.find_by_username(params[:username])
     end
 
-    def profile_photo 
-        @user = User.find_by(params[:photo])
-    end
 
 end 

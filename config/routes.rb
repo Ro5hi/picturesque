@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :posts
   end
   get '/profile/:username' => "users#show", as: :profile 
+  get '/:username/posts/:id' => "posts#show"
   
   resources :posts, shallow: true do 
     resources :comments
@@ -20,6 +21,5 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index, :show]
   get '/tag/:name' => "tags#show"
-  get '/:username/posts/:id' => "posts#show"
   
 end
