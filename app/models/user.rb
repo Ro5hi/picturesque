@@ -15,6 +15,7 @@ class User < ApplicationRecord
         validates :username, uniqueness: true 
         validates :description, length: { maximum: 50 } 
 
+        # scope: :user_posts, -> {where length(@user.posts) > 3 }}
 
   mount_uploader :photo, PhotoUploader
   serialize :photo, JSON
