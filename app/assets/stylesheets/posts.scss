@@ -1,27 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+$roboto: 'Roboto', sans-serif;
+
 .show-posts {
     margin-top: 20px ; 
     background-color: white;
     width: 375px ;
     margin-bottom: 30px ;
-    font-family: Arial, Helvetica, sans-serif ;
+    font-family: $roboto;
 }
 
 .caption {
     border: 1px solid gray;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $roboto;
     width: 375px ;
     margin-bottom: 20px ;
 }
 
 .comments {
     border: 1px solid gray;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $roboto;
     width: 375px ;
     margin-bottom: 20px ;
 }
 .username {
     border: 1px solid gray;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $roboto;
     width: 375px ;
     margin-bottom: 5px;
 }
@@ -30,12 +34,12 @@
     background-color: blanchedalmond;
     border: 1px whitesmoke;
     width: 100px ;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $roboto;
 }
 
 .actions {
     border: 1px solid gray;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $roboto;
     width: 375px ;
     margin-bottom: 20px ;
 }

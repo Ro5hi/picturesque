@@ -1,25 +1,20 @@
 <body>
-    <center>
-    
         <%= stylesheet_link_tag "application", media: "all" %>    
-
     <div class="index">
-        <h1> P I C T U R E S Q U E
+        <h1> P I C T U R E S Q U E</h1>
             <h4>
                 <p> 
-                    Express yourself.
+                    Be inspired.
                 </p>
             </h4>
-        </h1>
     </div>
 
         <div class="community-posts">
             <div class="row">
-                <h5> Be inspired. </h5>
-                <% @posts.limit(3).each do |post| %>
+                    <p>Featured Posts</p>
+                <% @posts.limit(7).each do |post| %>
                     <%= image_tag post.photo.url, :size => "200x200", class: 'img-responsive post-img' %>
                 <% end %>
             </div>
         </div>
-    </center>
 </body>
