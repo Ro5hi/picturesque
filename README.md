@@ -22,6 +22,12 @@ You will need to run *bundle install* after forking the project to get the neces
 
 Users must first sign up for an account using their name, email, and a chosen password. Registered users may change their login credentials through the "Account" tab on the navigation bar. Carrierwave gem is used for storing photos. Once a photo is uploaded, the user can give the photo a caption. Users have their own profile page with a profile-picture feature. Users can also view other uploads in the Posts path. Users cannot edit content other than their own. Posts can be affiliated with a tag (similar to hashtag). Posts with the same tag will be displayed accordingly in it's own view.
 
+## Snapshot
+
+![ImagePreview](https://imgur.com/myqA28c)
+
+Watch the demo here: https://www.youtube.com/watch?v=nvMnJA_dJGY&t=65s
+
 ## Credits:
 
 Big thank you to my instructor (Morgan), cohort-mates (BJ & Ben), and friend (Nick) for making this project possible!
