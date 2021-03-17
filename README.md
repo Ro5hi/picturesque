@@ -24,7 +24,7 @@ Users must first sign up for an account using their name, email, and a chosen pa
 
 ## Snapshot
 
-![ImagePreview](https://imgur.com/myqA28c)
+![ImagePreview](https://imgur.com/myqA28c.jpg)
 
 Watch the demo here: https://www.youtube.com/watch?v=nvMnJA_dJGY&t=65s
 
